@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '3000:3000'
+    environment:
+      - MONGO_URI=mongodb+srv://usuario:senha@cluster.mongodb.net/loja
+      - JWT_SECRET=segredo123
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '8080:80'
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000
